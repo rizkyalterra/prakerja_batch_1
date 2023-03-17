@@ -3,17 +3,17 @@ package config
 import (
 	"prakerja/models"
 
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func InitDB() {
-	// dsn := "root:123ABC4d.@tcp(127.0.0.1:3306)/prakerja?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:uV2WvFxfjuI4YJYir73o@tcp(containers-us-west-37.railway.app:6053)/railway?charset=utf8mb4&parseTime=True&loc=Local"
 
 	var err error
-	DB, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("tidak koneksi ke database")
 	}
